@@ -39,8 +39,9 @@ def main():
                  'content': f'Run a vulnerability scan utilizing the tools you have access to, on this url: {target}. Any response you give should be a single command, or multiple commands chained with &&, and all results should be output to text files with the name of the tool used. '}
             ]
         )
-
+        print('[+] Running: ' + response.choices[0].message.content)
         subprocess.run(response.choices[0].message.content, shell=True, capture_output=True, text=True)
+	print('[+] Scanning done, you can find the output in the files in this directory. If you prefer to have the results output to your terminal, remove the capture_output=true and text=True args in the source ya skid ;)')
     except Exception as e:
         print(f'Error: {str(e)}')
 
